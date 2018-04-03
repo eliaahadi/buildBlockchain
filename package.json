@@ -1,0 +1,18 @@
+{
+  "name": "chain",
+  "version": "1.0.0",
+  "description": "create a simple JS blockchain",
+  "main": "index.js",
+  "author": "eliaahadi <elia.ahadi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev-test": "nodemon test/dev-test",
+    "test": "jest --watchAll"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3"
+  }
+}
