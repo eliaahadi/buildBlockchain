@@ -1,4 +1,4 @@
-# blockchainJS
+# Build a blockchain in JavaScript
 Create a simple JavaScript blockchain.
 
 ## Blockchain setup
@@ -6,6 +6,18 @@ Link packages first by typing this command in terminal:
 ```
 yarn install
 ```
+To run tests, in terminal type:
+```
+yarn test
+```
+To view endpoint responses, open up a tool like Postman and type in terminal:
+```
+yarn dev
+```
+
+Then in Postman,
+Enter localhost:3001 for URL, and notice the response.
+If all goes well, you’ll find the array of blocks of the blockchain.
 
 ## Steps to create one
  1. Blocks

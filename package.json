@@ -6,11 +6,15 @@
   "author": "eliaahadi <elia.ahadi@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node ./app",
+    "dev": "nodemon ./app",
     "dev-test": "nodemon test/dev-test",
     "test": "jest --watchAll"
   },
   "dependencies": {
-    "crypto-js": "^3.1.9-1"
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "ws": "^5.1.1"
   },
   "devDependencies": {
     "jest": "^22.4.3"
