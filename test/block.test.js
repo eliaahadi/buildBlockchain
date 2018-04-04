@@ -17,17 +17,17 @@ describe('Block', () => {
     expect(block.lastHash).toEqual(lastBlock.hash);
   });
 
-  xit('generates a hash that matches the difficulty', () => {
+  it('generates a hash that matches the difficulty', () => {
     expect(block.hash.substring(0, block.difficulty))
       .toEqual('0'.repeat(block.difficulty));
   });
 
-  xit('lowers the difficulty for slowly mined blocks', () => {
+  it('lowers the difficulty for slowly mined blocks', () => {
     expect(Block.adjustDifficulty(block, block.timestamp+360000))
       .toEqual(block.difficulty-1);
   });
 
-  xit('raises the difficulty for quickly mined blocks', () => {
+  it('raises the difficulty for quickly mined blocks', () => {
     expect(Block.adjustDifficulty(block, block.timestamp+1))
       .toEqual(block.difficulty+1);
   });
