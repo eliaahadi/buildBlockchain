@@ -8,6 +8,7 @@ const MESSAGE_TYPES = {
   clear_transactions: 'CLEAR_TRANSACTIONS'
 };
 
+// this class connects the server and does methods of connecting peers, sockets, handling messages, sending and syncing chains, etc.
 class P2pServer {
   constructor(blockchain, transactionPool) {
     this.blockchain = blockchain;

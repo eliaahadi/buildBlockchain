@@ -1,5 +1,6 @@
 const Transaction = require('../wallet/transaction');
 
+// this class checks and updates transactions in a pool
 class TransactionPool {
   constructor() {
     this.transactions = [];

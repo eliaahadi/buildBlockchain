@@ -2,6 +2,7 @@ const ChainUtil = require('../chain-util');
 const Transaction = require('./transaction');
 const { INITIAL_BALANCE } = require('../config');
 
+// this gets a public key, signs the hash, creates transaction, calculates balance, and gets wallet address
 class Wallet {
   constructor() {
     this.balance = INITIAL_BALANCE;

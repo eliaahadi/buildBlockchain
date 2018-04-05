@@ -17,10 +17,13 @@ const miner = new Miner(bc, tp, wallet, p2pServer);
 
 app.use(bodyParser.json());
 
+// this endpoint checks the blocks chain
 app.get('/blocks', (req, res) => {
   res.json(bc.chain);
 });
 
+
+// this endoing posts new block and syncs to peer to peer server
 app.post('/mine', (req, res) => {
   const block = bc.addBlock(req.body.data);
   console.log(`New block added: ${block.toString()}`);
@@ -30,10 +33,12 @@ app.post('/mine', (req, res) => {
   res.redirect('/blocks');
 });
 
+// this endpoint gets the transactions
 app.get('/transactions', (req, res) => {
   res.json(tp.transactions);
 });
 
+// this endpoint posts and braodcasts transaction
 app.post('/transact', (req, res) => {
   const { recipient, amount } = req.body;
   const transaction = wallet.createTransaction(recipient, amount, bc, tp);
@@ -41,12 +46,14 @@ app.post('/transact', (req, res) => {
   res.redirect('/transactions');
 });
 
+// this endpoint gets new block mined
 app.get('/mine-transactions', (req, res) => {
   const block = miner.mine();
   console.log(`New block added: ${block.toString()}`);
   res.redirect('/blocks');
 });
 
+// this endpoint gets public key from wallet
 app.get('/public-key', (req, res) => {
   res.json({ publicKey: wallet.publicKey });
 });

@@ -1,5 +1,6 @@
 const Block = require('./block');
 
+// this class adds block, checks if chain is valid, and replaces chain
 class Blockchain {
   constructor() {
     this.chain = [Block.genesis()];

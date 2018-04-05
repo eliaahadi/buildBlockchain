@@ -9,7 +9,8 @@
     "start": "node ./app",
     "dev": "nodemon ./app",
     "dev-test": "nodemon test/dev-test",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint --ext .js src"
   },
   "jest": {
     "testEnvironment": "node"
@@ -18,6 +19,7 @@
     "body-parser": "^1.18.2",
     "crypto-js": "^3.1.9-1",
     "elliptic": "^6.4.0",
+    "eslint": "^4.19.1",
     "express": "^4.16.2",
     "uuid": "^3.2.1",
     "ws": "^4.0.0"
