@@ -11,12 +11,19 @@
     "dev-test": "nodemon test/dev-test",
     "test": "jest --watchAll"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "crypto-js": "^3.1.9-1",
-    "express": "^4.16.3",
-    "ws": "^5.1.1"
+    "elliptic": "^6.4.0",
+    "express": "^4.16.2",
+    "uuid": "^3.2.1",
+    "ws": "^4.0.0"
   },
   "devDependencies": {
-    "jest": "^22.4.3"
+    "jest": "^22.4.3",
+    "nodemon": "^1.14.12"
   }
 }

@@ -1,4 +1,4 @@
-const Block = require('../blockchain/block');
+const Block = require('./block');
 
 class Blockchain {
   constructor() {

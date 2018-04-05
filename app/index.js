@@ -1,39 +1,55 @@
 const express = require('express');
-const Blockchain = require('../blockchain/blockchain');
+const bodyParser = require('body-parser');
+const Blockchain = require('../blockchain');
+const P2pServer = require('./p2p-server');
+const Wallet = require('../wallet');
+const TransactionPool = require('../wallet/transaction-pool');
+const Miner = require('./miner');
+
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
-const SHA256 = require('crypto-js/sha256');
 
 const app = express();
 const bc = new Blockchain();
+const wallet = new Wallet();
+const tp = new TransactionPool();
+const p2pServer = new P2pServer(bc, tp);
+const miner = new Miner(bc, tp, wallet, p2pServer);
 
-const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const P2pServer = require('./p2p-server');
-const p2pServer = new P2pServer(bc);
-
-// view responses on localhost:3001/blocks
-
-// GET request blocks endpoint JSON response localhost:3001/blocks
 app.get('/blocks', (req, res) => {
   res.json(bc.chain);
 });
 
-app.listen(HTTP_PORT, () => console.log(`Listening on port: ${HTTP_PORT}`));
-
-// POST request mine endpoint JSON response localhost:3001/mine
 app.post('/mine', (req, res) => {
   const block = bc.addBlock(req.body.data);
   console.log(`New block added: ${block.toString()}`);
-  res.redirect('/blocks');
+
   p2pServer.syncChains();
+
+  res.redirect('/blocks');
 });
 
+app.get('/transactions', (req, res) => {
+  res.json(tp.transactions);
+});
+
+app.post('/transact', (req, res) => {
+  const { recipient, amount } = req.body;
+  const transaction = wallet.createTransaction(recipient, amount, bc, tp);
+  p2pServer.broadcastTransaction(transaction);
+  res.redirect('/transactions');
+});
+
+app.get('/mine-transactions', (req, res) => {
+  const block = miner.mine();
+  console.log(`New block added: ${block.toString()}`);
+  res.redirect('/blocks');
+});
+
+app.get('/public-key', (req, res) => {
+  res.json({ publicKey: wallet.publicKey });
+});
+
+app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
 p2pServer.listen();
-
-
-/* post this data in postman localhost:3001/mine
-{
-"data": "foo"
-}
-*/
