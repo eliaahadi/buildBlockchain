@@ -10,22 +10,36 @@
     "dev": "nodemon ./app",
     "dev-test": "nodemon test/dev-test",
     "test": "jest --watchAll",
-    "lint": "eslint --ext .js src"
+    "lint": "eslint --ext .js src",
+    "serve": "webpack-dev-server --progress --colors",
+    "app": "node ./server/bin/www"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4",
+    "elliptic": "^6.4.0",
     "body-parser": "^1.18.2",
     "crypto-js": "^3.1.9-1",
-    "elliptic": "^6.4.0",
     "eslint": "^4.19.1",
     "express": "^4.16.2",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
     "uuid": "^3.2.1",
     "ws": "^4.0.0"
   },
   "devDependencies": {
     "jest": "^22.4.3",
-    "nodemon": "^1.14.12"
+    "nodemon": "^1.14.12",
+    "webpack-cli": "^2.0.14"
   }
 }

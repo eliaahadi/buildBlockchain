@@ -1,21 +1,51 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const Blockchain = require('../blockchain/blockchain');
-const P2pServer = require('./p2p-server');
-const Wallet = require('../wallet/wallet');
-const TransactionPool = require('../wallet/transaction-pool');
-const Miner = require('./miner');
+import React, { Component } from 'react';
 
-const HTTP_PORT = process.env.HTTP_PORT || 3001;
+import '../styles/index.css';
 
-const app = express();
-const bc = new Blockchain();
-const wallet = new Wallet();
-const tp = new TransactionPool();
-const p2pServer = new P2pServer(bc, tp);
-const miner = new Miner(bc, tp, wallet, p2pServer);
 
-app.use(bodyParser.json());
+
+/* 
+Develop a frontend, where a user can see every fellow user’s public addresses, 
+  and send currency to the individual. 
+This frontend could show the current difficulty of the system. 
+It could have buttons for mining the transactions, 
+  or viewing the blockchain data. Use your imagination.
+*/
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+ 
+   async componentDidMount() {
+
+    const blocksResponse = await fetch(
+      `/blocks`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const blocks = await blocksResponse.json();
+    console.log("blocks data ", blocks);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        Hello Elia
+      </div>
+    );
+  }
+}
+
+export default App;
+
+/*
 
 // this endpoint checks the blocks chain
 app.get('/blocks', (req, res) => {
@@ -32,11 +62,7 @@ app.post('/mine', (req, res) => {
   res.redirect('/blocks');
 });
 
-/* post on localhost:3001 
-{
-"data": "foo"
-}
-*/ 
+
 
 // this endpoint gets the transactions
 app.get('/transactions', (req, res) => {
@@ -68,5 +94,4 @@ app.get('/balance', (req, res) => {
   res.json({ wallet: wallet.calculateBalance(bc) });
 });
 
-app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
-p2pServer.listen();
+*/

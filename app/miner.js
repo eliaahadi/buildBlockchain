@@ -1,4 +1,4 @@
-const Wallet = require('../wallet');
+const Wallet = require('../wallet/wallet');
 const Transaction = require('../wallet/transaction');
 
 // this class adds block, checks if chain is valid, and replaces chain
