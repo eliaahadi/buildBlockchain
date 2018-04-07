@@ -1,5 +1,5 @@
-const ChainUtil = require('../chain-util');
-const { MINING_REWARD } = require('../config');
+const ChainUtil = require('../../chain-util');
+const { MINING_REWARD } = require('../../config');
 
 // this class checks and updates a single transaction
 class Transaction {

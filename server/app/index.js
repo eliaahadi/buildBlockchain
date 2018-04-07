@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const Blockchain = require('../blockchain/blockchain');
+const Blockchain = require('../server/blockchain/blockchain');
 const P2pServer = require('./p2p-server');
-const Wallet = require('../wallet/wallet');
-const TransactionPool = require('../wallet/transaction-pool');
+const Wallet = require('../server/wallet/wallet');
+const TransactionPool = require('../server/wallet/transaction-pool');
 const Miner = require('./miner');
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001;

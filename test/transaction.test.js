@@ -1,5 +1,5 @@
-const Transaction = require('../wallet/transaction');
-const Wallet = require('../wallet/wallet');
+const Transaction = require('../server/wallet/transaction');
+const Wallet = require('../server/wallet/wallet');
 const { MINING_REWARD } = require('../config');
 
 describe('Transaction', () => {

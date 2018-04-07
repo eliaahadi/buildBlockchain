@@ -1,5 +1,5 @@
-const ChainUtil = require('../chain-util');
-const { DIFFICULTY, MINE_RATE } = require('../config');
+const ChainUtil = require('../../chain-util');
+const { DIFFICULTY, MINE_RATE } = require('../../config');
 
 // Create the block class with a file called block.js. 
 // Each black has a `lastHash`, `hash`, `data, `nonce`, `diffculty` and `timestamp` attribute.
