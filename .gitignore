@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Bundle files
+public/bundle.js
+public/bundle.js.map
+
+.vscode/launch.json

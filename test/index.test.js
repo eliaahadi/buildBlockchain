@@ -1,5 +1,5 @@
-const Blockchain = require('../server/blockchain/blockchain');
-const Block = require('../server/blockchain/block');
+const Blockchain = require('../server/routes/util/blockchain/blockchain');
+const Block = require('../server/routes/util/blockchain/block');
 
 describe('Blockchain', () => {
   let bc, bc2;

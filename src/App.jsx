@@ -19,20 +19,20 @@ class App extends Component {
   }
 
  
-   async componentDidMount() {
+  //  async componentDidMount() {
 
-    const blocksResponse = await fetch(
-      `/blocks`,
-      {
-        method: 'GET',
-        headers: new Headers({
-          'content-type': 'application/json',
-        }),
-      },
-    );
-    const blocks = await blocksResponse.json();
-    console.log("blocks data ", blocks);
-  }
+  //   const blocksResponse = await fetch(
+  //     `/blocks`,
+  //     {
+  //       method: 'GET',
+  //       headers: new Headers({
+  //         'content-type': 'application/json',
+  //       }),
+  //     },
+  //   );
+  //   const blocks = await blocksResponse.json();
+  //   console.log("blocks data ", blocks);
+  // }
 
   render() {
     return (

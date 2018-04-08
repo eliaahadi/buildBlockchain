@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './src/App.jsx';
+import '../styles/index.css';
+import App from './App.jsx';
 
 ReactDOM.render(
 //  <div>Shoruken!</div>,

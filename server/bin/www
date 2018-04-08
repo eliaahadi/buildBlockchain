@@ -6,13 +6,13 @@
 
 const app = require('../app');
 const debug = require('debug')('init:server');
-const http = require('http');
+const http = require('http'), io = require('socket.io');;
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3001');
+const port = normalizePort(process.env.PORT || '4001');
 app.set('port', port);
 console.error(`port ${port}`);
 
@@ -87,3 +87,21 @@ function onListening() {
     : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
 }
+
+
+// Create a Socket.IO instance, passing it our server
+var socket = io.listen(server);
+
+// Add a connect listener
+socket.on('connection', function(client){ 
+
+    // Success!  Now listen to messages to be received
+    client.on('message',function(event){ 
+        console.log('Received message from client!',event);
+    });
+    client.on('disconnect',function(){
+        clearInterval(interval);
+        console.log('Server has disconnected');
+    });
+
+});

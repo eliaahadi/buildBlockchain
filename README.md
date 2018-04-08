@@ -16,7 +16,7 @@ yarn dev
 ```
 
 Then in Postman,
-Enter localhost:3001 for URL, and notice the response.
+Enter localhost:4001 for URL, and notice the response.
 If all goes well, you’ll find the array of blocks of the blockchain.
 
 ## Steps to create one

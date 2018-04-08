@@ -1,4 +1,4 @@
-const Block = require('../server/blockchain/block');
+const Block = require('../server/routes/util/blockchain/block');
 
 describe('Block', () => {
   let data, lastBlock, block;

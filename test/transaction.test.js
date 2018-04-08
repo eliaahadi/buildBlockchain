@@ -1,6 +1,6 @@
-const Transaction = require('../server/wallet/transaction');
-const Wallet = require('../server/wallet/wallet');
-const { MINING_REWARD } = require('../config');
+const Transaction = require('../server/routes/util/wallet/transaction');
+const Wallet = require('../server/routes/util/wallet/wallet');
+const { MINING_REWARD } = require('../server/routes/util/config');
 
 describe('Transaction', () => {
   let transaction, wallet, recipient, amount;
