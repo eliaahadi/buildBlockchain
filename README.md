@@ -17,7 +17,7 @@ yarn dev
 
 Then in Postman,
 Enter localhost:4001 for URL, and notice the response.
-If all goes well, you’ll find the array of blocks of the blockchain.
+If all goes well, you'll be able to interact with the UI.
 
 ## Steps to create one
  1. Blocks
