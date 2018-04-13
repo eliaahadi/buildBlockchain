@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import {Nav, NavItem, Navbar, Badge} from 'react-bootstrap';
 
 import '../styles/index.css';
-
-
 
 /* 
 Develop a frontend, where a user can see every fellow user’s public addresses, 
@@ -19,25 +18,68 @@ class App extends Component {
   }
 
  
-  //  async componentDidMount() {
+  // connect to backend and render page initially on localhost:4001
+   async componentDidMount() {
+    // console.log("component did mount");
+    const blocksResponse = await fetch(
+      `api/blocks`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const blocks = await blocksResponse.json();
+    console.log("blocks data ", blocks);
+  }
 
-  //   const blocksResponse = await fetch(
-  //     `/blocks`,
-  //     {
-  //       method: 'GET',
-  //       headers: new Headers({
-  //         'content-type': 'application/json',
-  //       }),
-  //     },
-  //   );
-  //   const blocks = await blocksResponse.json();
-  //   console.log("blocks data ", blocks);
-  // }
+  async getTransactions() {
+    // console.log("component did mount");
+    const transResponse = await fetch(
+      `api/transactions`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const trans = await transResponse.json();
+    console.log("transactions data ", transactions);
+
+    // router.get('/transactions', (req, res) => {
+    //   res.json(tp.transactions);
+    // });
+  }
+
+  async getPublicKey() {
+    // console.log("component did mount");
+    const publicKeyResponse = await fetch(
+      `api/public-key`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const publicKey = await publicKeyResponse.json();
+    console.log("public key  ", publicKey);
+
+    // router.get('/transactions', (req, res) => {
+    //   res.json(tp.transactions);
+    // });
+  }
 
   render() {
     return (
+
       <div className="App">
-       Ramen!
+      Blockchain App!<br />
+        <button onClick={() => this.getPublicKey()}>
+          Get PublicKey
+        </button>
       </div>
     );
   }

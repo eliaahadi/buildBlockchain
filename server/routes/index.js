@@ -18,9 +18,12 @@ const miner = new Miner(bc, tp, wallet, p2pServer);
 
 
 // app.use(bodyParser.json());
+/*
 router.get('/', (req, res, next) => {
   res.send('hello world somewhere');
 });
+*/
+
 
 // this endpoint checks the blocks chain
 router.get('/blocks', (req, res) => {
