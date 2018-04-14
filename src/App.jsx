@@ -78,7 +78,7 @@ class App extends Component {
       <div className="App">
       Blockchain App!<br />
         <button onClick={() => this.getPublicKey()}>
-          Get PublicKey
+          Get PublicKey HOT
         </button>
       </div>
     );

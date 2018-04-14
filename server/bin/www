@@ -6,7 +6,7 @@
 
 const app = require('../app');
 const debug = require('debug')('init:server');
-const http = require('http'), io = require('socket.io');;
+const http = require('http'), io = require('socket.io');
 
 /**
  * Get port from environment and store in Express.
@@ -34,19 +34,19 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  const portNo = parseInt(val, 10);
+	const portNo = parseInt(val, 10);
 
-  if (isNaN(portNo)) {
-    // named pipe
-    return val;
-  }
+	if (isNaN(portNo)) {
+		// named pipe
+		return val;
+	}
 
-  if (portNo >= 0) {
-    // port number
-    return portNo;
-  }
+	if (portNo >= 0) {
+		// port number
+		return portNo;
+	}
 
-  return false;
+	return false;
 }
 
 /**
@@ -54,38 +54,38 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+	if (error.syscall !== 'listen') {
+		throw error;
+	}
 
-  const bind = typeof port === 'string'
-    ? `Pipe ${port}`
-    : `Port ${port}`;
+	const bind = typeof port === 'string'
+		? `Pipe ${port}`
+		: `Port ${port}`;
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(`${bind} requires elevated privileges`);
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(`${bind} is already in use`);
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+	// handle specific listen errors with friendly messages
+	switch (error.code) {
+	case 'EACCES':
+		console.error(`${bind} requires elevated privileges`);
+		process.exit(1);
+		break;
+	case 'EADDRINUSE':
+		console.error(`${bind} is already in use`);
+		process.exit(1);
+		break;
+	default:
+		throw error;
+	}
 }
 
 /**
  * Event listener for HTTP server "listening" event.
  */
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? `pipe ${addr}`
-    : `port ${addr.port}`;
-  debug(`Listening on ${bind}`);
+	const addr = server.address();
+	const bind = typeof addr === 'string'
+		? `pipe ${addr}`
+		: `port ${addr.port}`;
+	debug(`Listening on ${bind}`);
 }
 
 
@@ -95,13 +95,13 @@ var socket = io.listen(server);
 // Add a connect listener
 socket.on('connection', function(client){ 
 
-    // Success!  Now listen to messages to be received
-    client.on('message',function(event){ 
-        console.log('Received message from client!',event);
-    });
-    client.on('disconnect',function(){
-        clearInterval(interval);
-        console.log('Server has disconnected');
-    });
+	// Success!  Now listen to messages to be received
+	client.on('message',function(event){ 
+		console.log('Received message from client!',event);
+	});
+	client.on('disconnect',function(){
+		clearInterval(interval);
+		console.log('Server has disconnected');
+	});
 
 });

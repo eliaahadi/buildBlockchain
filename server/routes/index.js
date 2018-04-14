@@ -27,17 +27,17 @@ router.get('/', (req, res, next) => {
 
 // this endpoint checks the blocks chain
 router.get('/blocks', (req, res) => {
-  res.json(bc.chain);
+	res.json(bc.chain);
 });
 
 // this endpoint posts new block and syncs to peer to peer server
 router.post('/mine', (req, res) => {
-  const block = bc.addBlock(req.body.data);
-  console.log(`New block added: ${block.toString()}`);
+	const block = bc.addBlock(req.body.data);
+	console.log(`New block added: ${block.toString()}`);
 
-  p2pServer.syncChains();
+	p2pServer.syncChains();
 
-  res.redirect('/blocks');
+	res.redirect('/blocks');
 });
 
 /* post on localhost:4001 
@@ -48,32 +48,32 @@ router.post('/mine', (req, res) => {
 
 // this endpoint gets the transactions
 router.get('/transactions', (req, res) => {
-  res.json(tp.transactions);
+	res.json(tp.transactions);
 });
 
 // this endpoint posts and broadcasts transaction
 router.post('/transact', (req, res) => {
-  const { recipient, amount } = req.body;
-  const transaction = wallet.createTransaction(recipient, amount, bc, tp);
-  p2pServer.broadcastTransaction(transaction);
-  res.redirect('/transactions');
+	const { recipient, amount } = req.body;
+	const transaction = wallet.createTransaction(recipient, amount, bc, tp);
+	p2pServer.broadcastTransaction(transaction);
+	res.redirect('/transactions');
 });
 
 // this endpoint gets new block mined
 router.get('/mine-transactions', (req, res) => {
-  const block = miner.mine();
-  console.log(`New block added: ${block.toString()}`);
-  res.redirect('/blocks');
+	const block = miner.mine();
+	console.log(`New block added: ${block.toString()}`);
+	res.redirect('/blocks');
 });
 
 // this endpoint gets public key from wallet
 router.get('/public-key', (req, res) => {
-  res.json({ publicKey: wallet.publicKey });
+	res.json({ publicKey: wallet.publicKey });
 });
 
 // this endpoint allows the user to calculate their balance based on the blockchain, and view it at any time.
 router.get('/balance', (req, res) => {
-  res.json({ wallet: wallet.calculateBalance(bc) });
+	res.json({ wallet: wallet.calculateBalance(bc) });
 });
 
 p2pServer.listen();

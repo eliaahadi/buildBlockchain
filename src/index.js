@@ -5,6 +5,6 @@ import App from './App.jsx';
 
 ReactDOM.render(
 //  <div>Shoruken!</div>,
-  <App />,
-  document.getElementById('root')
+	<App />,
+	document.getElementById('root')
 );

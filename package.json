@@ -11,6 +11,8 @@
     "dev-test": "nodemon test/dev-test",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js src",
+    "web": "webpack --progress --colors",
+    "webdev": "webpack-dev-server --progress --colors",
     "serve": "webpack && webpack-dev-server --progress --colors",
     "app": "node ./server/bin/www"
   },
@@ -31,7 +33,6 @@
     "crypto-js": "^3.1.9-1",
     "css-loader": "^0.28.7",
     "elliptic": "^6.4.0",
-    "eslint": "^4.19.1",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
     "open-browser-webpack-plugin": "^0.0.5",
@@ -46,6 +47,8 @@
     "ws": "^4.0.0"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.3",
     "nodemon": "^1.14.12",
     "webpack-cli": "^2.0.14"
