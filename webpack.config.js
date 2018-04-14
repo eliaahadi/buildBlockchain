@@ -28,7 +28,6 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'public'),
-		publicPath: '/public',
 	},
 	plugins: [
 		new OpenBrowserPlugin({ url: 'http://localhost:4000' }),

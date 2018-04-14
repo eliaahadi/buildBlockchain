@@ -76,9 +76,9 @@ class App extends Component {
     return (
 
       <div className="App">
-      Blockchain App!<br />
+      React/Redux Blockchain Web App <br />
         <button onClick={() => this.getPublicKey()}>
-          Get PublicKey HOT
+          Get PublicKey Data
         </button>
       </div>
     );
