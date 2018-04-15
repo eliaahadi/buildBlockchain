@@ -8,11 +8,26 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 
 const app = express();
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+var http = require('http');
+var finalhandler = require('finalhandler');
+
+var _favicon = favicon(path.join(__dirname, 'public', 'favicon.ico'));
+
+var server = http.createServer(function onRequest (req, res) {
+	var done = finalhandler(req, res);
+
+	_favicon(req, res, function onNext (err) {
+		if (err) return done(err);
+
+		// continue to process the request here, etc.
+
+		res.statusCode = 404;
+		res.end('oops');
+	});
+});
+
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
