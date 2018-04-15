@@ -1,8 +1,9 @@
+'use strict';
 import React, { Component } from 'react';
-import {Nav, NavItem, Navbar, Badge} from 'react-bootstrap';
-
+import {Grid, Row, Button, Nav, NavItem, Navbar, Badge} from 'react-bootstrap';
+import axios from 'axios';
 import '../styles/index.css';
-
+import Navbarheader from './Navbar';
 /* 
 Develop a frontend, where a user can see every fellow user’s public addresses, 
   and send currency to the individual. 
@@ -13,13 +14,44 @@ It could have buttons for mining the transactions,
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			blocks: []
+		};
+	}
 
- 
-  // connect to backend and render page initially on localhost:4001
-   async componentDidMount() {
+	// connect to backend and render page initially on localhost:4001
+	// async componentDidMount() {
+	componentDidMount() {
+		// //GET IMAGES FROM API
+		// axios.get('/api/images')
+		// 	.then(function(response){
+		// 		this.setState({images:response.data});
+		// 	}.bind(this))
+		// 	.catch(function(err){
+		// 		this.setState({images:'error loading image files from the server', img:''});
+		// 	}.bind(this));
+    
+
+		const blocksResponse = function(dispatch){
+			axios.get('/api/blocks')
+				.then((response)=>{
+					this.setState(()=>{
+						return {
+							blocks: response.data
+						};
+					});
+				})
+				.catch(function(err){
+					dispatch({type:'GET_BLOCKS_REJECTED',
+						msg:'error when getting the blocks'});
+				});
+		};
+		console.log('blocks data ', this.state.blocks);
+		//return blocksResponse;
+	}
+	/*
     // console.log("component did mount");
     const blocksResponse = await fetch(
       `api/blocks`,
@@ -32,6 +64,7 @@ class App extends Component {
     );
     const blocks = await blocksResponse.json();
     console.log("blocks data ", blocks);
+  
   }
 
   async getTransactions() {
@@ -71,18 +104,33 @@ class App extends Component {
     //   res.json(tp.transactions);
     // });
   }
+  */
 
-  render() {
-    return (
+	render() {
+		return (
+	
 
-      <div className="App">
-      React/Redux Blockchain Web App <br />
-        <button onClick={() => this.getPublicKey()}>
-          Get PublicKey Data
-        </button>
-      </div>
-    );
-  }
+        
+        
+			<div className="App">
+				<Navbarheader />
+				<img width={900} height={300} alt="900x300" src="/images/blockchain.png"/>
+				<br />
+        Blockchain App!
+        <br />
+        <br />
+				<button onClick={() => console.log('button test')}>
+        Get PublicKey
+				</button>
+			</div>
+      
+
+
+
+
+
+		);
+	}
 }
 
 export default App;

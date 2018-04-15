@@ -34,3 +34,4 @@ If all goes well, you'll be able to interact with the UI.
 - [Ryuta's meetup create a blockchain repository](https://www.meetup.com/CodeChrysalis/events/247572273/)
 - [A week with blockchain & React blog post](https://medium.com/@applification/a-week-with-the-blockchain-react-9fe33f895890)
 - [Code-a-bitcoin-blockchain-in-javascript](https://blockgeeks.com/guides/code-a-bitcoin-blockchain-in-javascript/)
+- [Webpack Dev Live Reloading](https://stackoverflow.com/questions/42712054/content-not-from-webpack-is-served-from-foo/42717524#42717524)
