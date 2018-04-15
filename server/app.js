@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 
 const app = express();
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
