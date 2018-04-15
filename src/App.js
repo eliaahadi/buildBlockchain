@@ -52,7 +52,6 @@ class App extends Component {
 		//return blocksResponse;
 	}
 	/*
-    // console.log("component did mount");
     const blocksResponse = await fetch(
       `api/blocks`,
       {
@@ -68,7 +67,6 @@ class App extends Component {
   }
 
   async getTransactions() {
-    // console.log("component did mount");
     const transResponse = await fetch(
       `api/transactions`,
       {
@@ -81,13 +79,9 @@ class App extends Component {
     const trans = await transResponse.json();
     console.log("transactions data ", transactions);
 
-    // router.get('/transactions', (req, res) => {
-    //   res.json(tp.transactions);
-    // });
   }
 
   async getPublicKey() {
-    // console.log("component did mount");
     const publicKeyResponse = await fetch(
       `api/public-key`,
       {
@@ -117,8 +111,8 @@ class App extends Component {
 				<img width={900} height={300} alt="900x300" src="/images/blockchain.png"/>
 				<br />
         Blockchain App!
-        <br />
-        <br />
+				<br />
+				<br />
 				<button onClick={() => console.log('button test')}>
         Get PublicKey
 				</button>
