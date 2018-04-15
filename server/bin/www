@@ -6,7 +6,7 @@
 
 const app = require('../app');
 const debug = require('debug')('init:server');
-const http = require('http'), io = require('socket.io');
+const http = require('http'); //, io = require('socket.io');
 
 /**
  * Get port from environment and store in Express.
@@ -88,7 +88,7 @@ function onListening() {
 	debug(`Listening on ${bind}`);
 }
 
-
+/*
 // Create a Socket.IO instance, passing it our server
 var socket = io.listen(server);
 
@@ -105,3 +105,5 @@ socket.on('connection', function(client){
 	});
 
 });
+
+*/
