@@ -6,7 +6,6 @@
   "author": "eliaahadi <elia.ahadi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./server/app",
     "dev": "nodemon ./server/app",
     "dev-test": "nodemon test/dev-test",
     "test": "jest --watchAll",
@@ -14,7 +13,7 @@
     "web": "webpack --progress --colors",
     "webdev": "webpack-dev-server  --content-base=public",
     "serve": "webpack && webpack-dev-server --progress --colors",
-    "app": "node ./server/bin/www"
+    "start": "node ./server/bin/www"
   },
   "engines": {
     "node": ">=8.9.4"
