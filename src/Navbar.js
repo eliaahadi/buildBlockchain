@@ -10,8 +10,7 @@ class Navbarheader extends Component {
 		return(
 			<div className="navbar">
 				<Navbar inverse fixedTop>
-          <Navbar.Header>
-          
+					<Navbar.Header> 
 						<Navbar.Brand>
 							<a href="/">BlockchainJS</a>
 						</Navbar.Brand>
