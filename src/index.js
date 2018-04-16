@@ -4,7 +4,6 @@ import '../styles/index.css';
 import App from './App.js';
 
 ReactDOM.render(
-//  <div>Shoruken!</div>,
 	<App />,
-	document.getElementById('root')
+	document.getElementById('app')
 );
