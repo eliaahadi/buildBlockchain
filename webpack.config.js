@@ -18,9 +18,9 @@ module.exports = {
 				include: path.join(__dirname, 'src'),
 				loader: 'babel-loader',
 				query: {
-					presets: ['react', 'es2015', 'stage-1'],
+					presets: ['react', 'es2015'],
 				},
-				test: /\.js?$/,
+				test: /\.jsx?$/,
 			},
 		],
 	},
@@ -28,13 +28,14 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'public'),
+		publicPath: '/public',
 	},
 	plugins: [
 		new OpenBrowserPlugin({ url: 'http://localhost:4000' }),
 
 	],
 	resolve: {
-		extensions: ['.webpack.js', '.js'],
+		extensions: ['.webpack.js', '.js', '.jsx'],
 	},
 	devServer: {
 		contentBase: path.join(__dirname, 'public'),
