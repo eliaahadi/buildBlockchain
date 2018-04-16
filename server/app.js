@@ -8,8 +8,8 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 
 const app = express();
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(favicon(path.join(__dirname + 'public/favicon.ico')));
+app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
+// app.use(favicon(path.dirname('../public/favicon.ico')));
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
