@@ -1,7 +1,3 @@
-// var path = require('path');
-// var webpack = require('webpack');
-// const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
 
