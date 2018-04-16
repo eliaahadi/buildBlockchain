@@ -1,3 +1,7 @@
+require('babel-core/register')({
+  "presets":["es2015", "react", "stage-1"]
+  });
+
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');

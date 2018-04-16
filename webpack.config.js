@@ -2,6 +2,8 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+
+
 module.exports = {
 	entry: `${path.resolve(__dirname, 'src')}/index.js`,
 	module: {
@@ -17,7 +19,7 @@ module.exports = {
 				query: {
 					presets: ['react', 'es2015'],
 				},
-				test: /\.jsx?$/,
+				test: /\.js?$/,
 			},
 		],
 	},
