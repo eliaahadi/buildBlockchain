@@ -7,13 +7,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./server/app",
+    "build": "webpack --config webpack.config.js --progress --colors",
     "dev-test": "nodemon test/dev-test",
     "test": "jest --watchAll",
     "lint": "eslint --ext .js src",
     "web": "webpack --progress --colors",
     "webdev": "webpack-dev-server  --content-base=public",
     "serve": "webpack && webpack-dev-server --progress --colors",
-    "start": "node ./server/bin/www"
+    "start": "node ./server/bin/www",
+    "postinstall": "yarn build"
   },
   "engines": {
     "node": ">=8.9.4"
