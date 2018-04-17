@@ -2,9 +2,18 @@
 Create a simple JavaScript blockchain.
 
 ## Blockchain setup
+To run app, clone the repository in your terminal with this command:
+```
+git clone https://github.com/eliaahadi/buildBlockchain.git
+```
 Link packages first by typing this command in terminal:
 ```
+cd buildBlockchain
 yarn install
+```
+To run app, in terminal type:
+```
+yarn start
 ```
 To run tests, in terminal type:
 ```
