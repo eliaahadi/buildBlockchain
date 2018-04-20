@@ -22,21 +22,23 @@ class App extends Component {
 	}
 
 	// connect to backend and render page initially on localhost:4001
-	// async componentDidMount() {
+	async componentWillMount() {
+    	/* 
 	componentDidMount() {
-		// //GET IMAGES FROM API
-		// axios.get('/api/images')
-		// 	.then(function(response){
-		// 		this.setState({images:response.data});
-		// 	}.bind(this))
-		// 	.catch(function(err){
-		// 		this.setState({images:'error loading image files from the server', img:''});
-		// 	}.bind(this));
+		//GET IMAGES FROM API
+		axios.get('/api/images')
+			.then(function(response){
+				this.setState({images:response.data});
+			}.bind(this))
+			.catch(function(err){
+				this.setState({images:'error loading image files from the server', img:''});
+			}.bind(this));
     
 
 		const blocksResponse = function(dispatch){
 			axios.get('/api/blocks')
 				.then((response)=>{
+          console.log("response data", response.data);
 					this.setState(()=>{
 						return {
 							blocks: response.data
@@ -49,21 +51,50 @@ class App extends Component {
 				});
 		};
 		console.log('blocks data ', this.state.blocks);
-		//return blocksResponse;
+		return blocksResponse;
 	}
-	/*
-    const blocksResponse = await fetch(
-      `api/blocks`,
+   */
+    const blocksResponse = await fetch(`api/blocks`,
       {
         method: 'GET',
         headers: new Headers({
           'content-type': 'application/json',
         }),
       },
-    );
-    const blocks = await blocksResponse.json();
-    console.log("blocks data ", blocks);
-  
+    ).then(response => response.json())
+    .then(data => this.setState({ blocks: data }))
+    .catch(err => console.error('Error ', err.toString()));
+
+    // const blocksR = await blocksResponse.json();
+    // this.setState({
+    //   blocks: blocksR
+    // });
+    // console.log("blocks data ", blocksR);
+    console.log("blocks state ", this.state.blocks, "blocks object ", this.state.blocks[0], this.state.blocks[0].hash);
+    /* blocks object
+    {timestamp: "Genesis time", lastHash: "-----", hash: "f1r57-h45h", data: Array(0), nonce: 0, …}
+    */
+  //  const blockMap = this.state.blocks[0].map((object) => {
+  //   // Only do this if items have no stable IDs
+  //   console.log("block map", object);
+  //   });
+
+  let blockObject = this.state.blocks[0];
+  const blockMap = Object.keys(blockObject).map((obj, i) => {
+      console.log(blockObject[obj]);
+  });
+     
+
+
+
+  }
+
+  mappedBlockData = () => {
+  let blockObject = this.state.blocks[0];
+  console.log("block obj function ", blockObject);
+  // let mappedBlockData = Object.keys(blockObject).map((obj, i) => {  
+  //   <li>{blockObject[obj]}</li>
+  // });
   }
 
   async getTransactions() {
@@ -78,7 +109,7 @@ class App extends Component {
     );
     const trans = await transResponse.json();
     console.log("transactions data ", transactions);
-
+ 
   }
 
   async getPublicKey() {
@@ -98,26 +129,35 @@ class App extends Component {
     //   res.json(tp.transactions);
     // });
   }
-  */
+
+
 
 	render() {
 		return (
-	
-
-        
-        
 			<div className="App">
 				<Navbarheader />
 				<img width={900} height={300} alt="900x300" src="/images/blockchain.png"/>
-				<br />
+        <br />
+        <h2>
         Blockchain App!
+        </h2>
+        <h3>Block data</h3>
+        <h4>
+        {this.mappedBlockData()}
+        </h4>
+        
 				<br />
-				<br />
-				<button onClick={() => console.log('button test')}>
+        <br />
+        <button onClick={() => console.log("test button info")}>
+        TEST BUTTON
+        </button>
+        <br />
+        <br />
+				<button onClick={() => this.getPublicKey()}>
         Get PublicKey
 				</button>
 			</div>
-      
+
 
 
 

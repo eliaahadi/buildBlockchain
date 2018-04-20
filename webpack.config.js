@@ -1,11 +1,12 @@
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
-
+require('babel-core/register');
+require('babel-polyfill');
 
 
 module.exports = {
-	entry: `${path.resolve(__dirname, 'src')}/index.js`,
+	entry: ['babel-polyfill',`${path.resolve(__dirname, 'src')}/index.js`],
 	module: {
 		loaders: [
 			{
@@ -17,7 +18,7 @@ module.exports = {
 				include: path.join(__dirname, 'src'),
 				loader: 'babel-loader',
 				query: {
-					presets: ['react', 'es2015', 'stage-1'],
+					presets: ['react', 'es2015', 'stage-0', 'stage-1'],
 				},
 				test: /\.js?$/,
 			},
@@ -26,7 +27,7 @@ module.exports = {
 	devtool: 'source-map',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(__dirname, 'public/'),
 		publicPath: '/public',
 	},
 	plugins: [
