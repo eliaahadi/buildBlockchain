@@ -79,22 +79,42 @@ class App extends Component {
   //   console.log("block map", object);
   //   });
 
-  let blockObject = this.state.blocks[0];
-  const blockMap = Object.keys(blockObject).map((obj, i) => {
-      console.log(blockObject[obj]);
-  });
+  // let blockObject = this.state.blocks[0];
+  // const blockMap = Object.keys(blockObject).map((obj, i) => {
+  //     console.log(blockObject[obj]);
+  // });
      
 
 
 
   }
 
-  mappedBlockData = () => {
-  let blockObject = this.state.blocks[0];
-  console.log("block obj function ", blockObject);
-  // let mappedBlockData = Object.keys(blockObject).map((obj, i) => {  
-  //   <li>{blockObject[obj]}</li>
-  // });
+  // componentWillUnmount() {
+  //   clearInterval(this.state.blocks);
+  // }
+
+  async mappedBlockData() {
+   setTimeout(() => {
+      let blockObject = this.state.blocks[0];
+      console.log("block obj function ", blockObject);
+    //  alert(JSON.stringify(blockObject));
+      let mappedBlockData = Object.keys(blockObject).map((obj, i) => {  
+        console.log("mapped blockObject ", blockObject);
+        <li>{blockObject}</li>
+      });  
+   }, 3000);
+
+  //  const j = Object.values(blockObject);
+  //  var blockEntries = [];
+
+  //    for (var i = 0; i < j.length; i++){
+  //     blockEntries.push(
+  //        <div>
+  //        <h3>{j[i].title} - {j[i].date}</h3>
+  //        <p>{j[i].entry}</p>
+  //        </div>);
+
+  //    }
   }
 
   async getTransactions() {
@@ -142,15 +162,15 @@ class App extends Component {
         Blockchain App!
         </h2>
         <h3>Block data</h3>
-        <h4>
-        {this.mappedBlockData()}
-        </h4>
-        
-				<br />
-        <br />
-        <button onClick={() => console.log("test button info")}>
-        TEST BUTTON
+        <button onClick={() => alert(JSON.stringify(this.state.blocks[0]))}>
+        Block data
         </button>
+        <div>        
+          <ul>
+          {this.mappedBlockData}
+          </ul>
+        </div>
+       
         <br />
         <br />
 				<button onClick={() => this.getPublicKey()}>
