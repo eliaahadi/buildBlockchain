@@ -95,28 +95,60 @@ class App extends Component {
 
   async mappedBlockData() {
    setTimeout(() => {
-      let blockObject = this.state.blocks[0];
-      console.log("block obj function ", blockObject);
-    //  alert(JSON.stringify(blockObject));
-      let mappedBlockData = Object.keys(blockObject).map((obj, i) => {  
-        console.log("mapped blockObject ", blockObject);
-        <li>{blockObject}</li>
-      });  
+  //     let blockObject = this.state.blocks[0];
+  //     console.log("block obj function ", blockObject);
+  //   //  alert(JSON.stringify(blockObject));
+  //     let mappedBlockData = Object.keys(blockObject).map((obj, i) => {  
+  //       console.log("mapped blockObject ", blockObject);
+  //       <li>{blockObject}</li>
+  //     });  
+  console.log("blockentries ");
    }, 3000);
+   
 
-  //  const j = Object.values(blockObject);
+  //  const j = Object.values(this.state.blocks[0]);
   //  var blockEntries = [];
 
   //    for (var i = 0; i < j.length; i++){
   //     blockEntries.push(
+          
   //        <div>
-  //        <h3>{j[i].title} - {j[i].date}</h3>
-  //        <p>{j[i].entry}</p>
+  //        <h3>{j[i]}</h3>
+       
   //        </div>);
 
   //    }
+   
+  }
+  async postTransactions() {
+    const transResponse = await fetch(
+      `api/transactions`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const trans = await transResponse.json();
+    console.log("transactions data ", transactions);
+ 
   }
 
+  async postmine() {
+    const transResponse = await fetch(
+      `api/transactions`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const trans = await transResponse.json();
+    console.log("transactions data ", transactions);
+ 
+  }
   async getTransactions() {
     const transResponse = await fetch(
       `api/transactions`,
@@ -163,18 +195,22 @@ class App extends Component {
         </h2>
         <h3>Block data</h3>
         <button onClick={() => alert(JSON.stringify(this.state.blocks[0]))}>
-        Block data
+          Block data
         </button>
-        <div>        
-          <ul>
-          {this.mappedBlockData}
-          </ul>
-        </div>
+        <button onClick={() => this.mappedBlockData}>
+          Text
+        </button>
        
         <br />
         <br />
 				<button onClick={() => this.getPublicKey()}>
-        Get PublicKey
+          Get PublicKey
+        </button>
+        
+        <br />
+        <br />
+				<button onClick={() => this.getTransactions()}>
+          Get Transactions
 				</button>
 			</div>
 
