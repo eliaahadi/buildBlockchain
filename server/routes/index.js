@@ -37,7 +37,7 @@ router.post('/mine', (req, res) => {
 
 	p2pServer.syncChains();
 
-	res.redirect('/blocks');
+	res.redirect('/api/blocks');
 });
 
 /* post on localhost:4001 
@@ -56,14 +56,16 @@ router.post('/transact', (req, res) => {
 	const { recipient, amount } = req.body;
 	const transaction = wallet.createTransaction(recipient, amount, bc, tp);
 	p2pServer.broadcastTransaction(transaction);
-	res.redirect('/transactions');
+	console.log("transaction data shows: ", transaction);
+	console.log("p2p data shows: ", p2pServer, p2pServer.broadcastTransaction(transaction));
+	res.redirect('/api/transactions');
 });
 
 // this endpoint gets new block mined
 router.get('/mine-transactions', (req, res) => {
 	const block = miner.mine();
 	console.log(`New block added: ${block.toString()}`);
-	res.redirect('/blocks');
+	res.redirect('/api/blocks');
 });
 
 // this endpoint gets public key from wallet

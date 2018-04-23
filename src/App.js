@@ -120,6 +120,13 @@ class App extends Component {
   //    }
    
   }
+
+  /* sample post transaction 
+  {
+	"recipient": "foo-4dr3ss",
+	"amount": 50
+  }
+  */
   async postTransactions() {
     const transResponse = await fetch(
       `api/transactions`,

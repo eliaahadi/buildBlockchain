@@ -8,6 +8,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+//PROXY
+var httpProxy = require('http-proxy');
 
 const index = require('./routes/index');
 
@@ -33,14 +35,33 @@ app.use(express.static(path.join(__dirname, '../public')));
 //   res.send('hello world somewhere');
 // });
 
+//PROXY TO API
+const apiProxy =
+httpProxy.createProxyServer({
+	target:'http://localhost:4001'
+});
+app.use('/api', function(req, res){
+	apiProxy.web(req, res);
+});
+// END PROXY
+app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!', err);
+});
+/*
 // catch 404 and forward to error handler
 app.use((request, response, next) => {
 	console.log('app.js test ', response);
-	const error = new Error('Not Found');
-	error.status = 404;
-	next(error);
+	// const error = new Error('Not Found');
+	// error.status = 404;
+	next();
 });
+
+
+
 
 // error handler
 app.use((error, request, response) => {
@@ -52,6 +73,7 @@ app.use((error, request, response) => {
 	response.status(error.status || 500);
 	response.render('error');
 });
+*/
 
 
 
