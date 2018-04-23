@@ -22,7 +22,7 @@ class App extends Component {
 	}
 
 	// connect to backend and render page initially on localhost:4001
-	async componentWillMount() {
+	// async componentWillMount() {
     	/* 
 	componentDidMount() {
 		//GET IMAGES FROM API
@@ -54,6 +54,7 @@ class App extends Component {
 		return blocksResponse;
 	}
    */
+  async getBlocks() {
     const blocksResponse = await fetch(`api/blocks`,
       {
         method: 'GET',
@@ -131,7 +132,7 @@ class App extends Component {
     const transResponse = await fetch(
       `api/transactions`,
       {
-        method: 'GET',
+        method: 'POST',
         headers: new Headers({
           'content-type': 'application/json',
         }),
@@ -146,7 +147,7 @@ class App extends Component {
     const transResponse = await fetch(
       `api/transactions`,
       {
-        method: 'GET',
+        method: 'POST',
         headers: new Headers({
           'content-type': 'application/json',
         }),
@@ -167,7 +168,37 @@ class App extends Component {
       },
     );
     const trans = await transResponse.json();
-    console.log("transactions data ", transactions);
+    console.log("transactions data ", trans);
+ 
+  }
+
+  async getMinedTransactions() {
+    const minedTransResponse = await fetch(
+      `api/mine-transactions`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const minedTrans = await minedTransResponse.json();
+    console.log("mined transactions ", minedTrans);
+ 
+  }
+
+  async getBalance() {
+    const balanceResponse = await fetch(
+      `api/balance`,
+      {
+        method: 'GET',
+        headers: new Headers({
+          'content-type': 'application/json',
+        }),
+      },
+    );
+    const bal = await balanceResponse.json();
+    console.log("wallet balance ", bal);
  
   }
 
@@ -184,9 +215,6 @@ class App extends Component {
     const publicKey = await publicKeyResponse.json();
     console.log("public key  ", publicKey);
 
-    // router.get('/transactions', (req, res) => {
-    //   res.json(tp.transactions);
-    // });
   }
 
 
@@ -200,25 +228,32 @@ class App extends Component {
         <h2>
         Blockchain App!
         </h2>
-        <h3>Block data</h3>
-        <button onClick={() => alert(JSON.stringify(this.state.blocks[0]))}>
-          Block data
+
+        <button onClick={() => this.getBlocks()}>
+        Get Blocks
         </button>
-        <button onClick={() => this.mappedBlockData}>
-          Text
+        <br />
+        <br />
+				<button onClick={() => this.getTransactions()}>
+          Get Transactions
+        </button>  
+        <br />
+        <br />
+				<button onClick={() => this.getMinedTransactions()}>
+          Get Mined Transactions
         </button>
-       
+        <br />
+        <br />
+				<button onClick={() => this.getBalance()}>
+          Get Balance
+        </button>
         <br />
         <br />
 				<button onClick={() => this.getPublicKey()}>
           Get PublicKey
         </button>
         
-        <br />
-        <br />
-				<button onClick={() => this.getTransactions()}>
-          Get Transactions
-				</button>
+  
 			</div>
 
 
