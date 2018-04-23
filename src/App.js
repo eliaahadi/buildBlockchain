@@ -17,7 +17,11 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			blocks: []
+			blocks: [],
+      transactions: {
+        recipient: "",
+        amount: 0
+      }
 		};
 	}
 
@@ -217,6 +221,14 @@ class App extends Component {
 
   }
 
+  handleChange = (event) => {
+    this.setState({transactions: event.target.transactions});
+  }
+
+  handleSubmit = (event) => {
+    alert('A transaction was submitted: ' + this.state.transactions);
+    event.preventDefault();
+  }
 
 
 	render() {
@@ -232,6 +244,18 @@ class App extends Component {
         <button onClick={() => this.getBlocks()}>
         Get Blocks
         </button>
+        <form onSubmit={this.handleSubmit}>
+        <label>
+          recipient:
+          <textarea value={this.state.transactions.recipient} onChange={this.handleChange} />
+        </label>
+        <br />
+        <label>
+          amount:
+          <textarea value={this.state.transactions.amount} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
         <br />
         <br />
 				<button onClick={() => this.getTransactions()}>
