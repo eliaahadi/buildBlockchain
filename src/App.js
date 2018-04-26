@@ -244,18 +244,6 @@ class App extends Component {
         <button onClick={() => this.getBlocks()}>
         Get Blocks
         </button>
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          recipient:
-          <textarea value={this.state.transactions.recipient} onChange={this.handleChange} />
-        </label>
-        <br />
-        <label>
-          amount:
-          <textarea value={this.state.transactions.amount} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
         <br />
         <br />
 				<button onClick={() => this.getTransactions()}>
@@ -290,54 +278,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-
-// this endpoint checks the blocks chain
-app.get('/blocks', (req, res) => {
-  res.json(bc.chain);
-});
-
-// this endpoint posts new block and syncs to peer to peer server
-app.post('/mine', (req, res) => {
-  const block = bc.addBlock(req.body.data);
-  console.log(`New block added: ${block.toString()}`);
-
-  p2pServer.syncChains();
-
-  res.redirect('/blocks');
-});
-
-
-
-// this endpoint gets the transactions
-app.get('/transactions', (req, res) => {
-  res.json(tp.transactions);
-});
-
-// this endpoint posts and broadcasts transaction
-app.post('/transact', (req, res) => {
-  const { recipient, amount } = req.body;
-  const transaction = wallet.createTransaction(recipient, amount, bc, tp);
-  p2pServer.broadcastTransaction(transaction);
-  res.redirect('/transactions');
-});
-
-// this endpoint gets new block mined
-app.get('/mine-transactions', (req, res) => {
-  const block = miner.mine();
-  console.log(`New block added: ${block.toString()}`);
-  res.redirect('/blocks');
-});
-
-// this endpoint gets public key from wallet
-app.get('/public-key', (req, res) => {
-  res.json({ publicKey: wallet.publicKey });
-});
-
-// this endpoint allows the user to calculate their balance based on the blockchain, and view it at any time.
-app.get('/balance', (req, res) => {
-  res.json({ wallet: wallet.calculateBalance(bc) });
-});
-
-*/
