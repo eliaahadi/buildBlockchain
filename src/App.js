@@ -141,6 +141,7 @@ class App extends Component {
         headers: new Headers({
           'content-type': 'application/json',
         }),
+        body: JSON.stringify({ transactions: this.state.transactions }),
       },
     );
     const trans = await transResponse.json();
@@ -148,7 +149,7 @@ class App extends Component {
  
   }
 
-  async postmine() {
+  async postMine() {
     const transResponse = await fetch(
       `api/transactions`,
       {
@@ -229,7 +230,7 @@ class App extends Component {
   handleChangeRecepient = (event) => {
     this.setState({ 
       transactions: {
-        recipient: event.target.recipient,
+        recipient: event.target.value,
         }
     });
   }
@@ -237,7 +238,7 @@ class App extends Component {
   handleChangeAmount = (event) => {
     this.setState({
       transactions: {
-        amount: event.target.amount}
+        amount: event.target.value}
     });
   }
 
@@ -247,12 +248,12 @@ class App extends Component {
   }
 
   handleSubmitRecepient = (event) => {
-    console.log('A transaction recepient was submitted: ', this.state.transactions);
+    console.log('A transaction recepient was submitted: ', this.state.transactions.recipient);
     event.preventDefault();
   }
 
   handleSubmitAmount = (event) => {
-    console.log('A transaction amount was submitted: ', this.state.transactions);
+    console.log('A transaction amount was submitted: ', this.state.transactions.amount);
     event.preventDefault();
   }
 
@@ -264,40 +265,38 @@ class App extends Component {
 				<img width={900} height={300} alt="900x300" src="/images/blockchain.png"/>
         <br />
         <h2>
-        Blockchain App!
+        Blockchain App
         </h2>
 
         <button onClick={() => this.getBlocks()}>
         Get Blocks
         </button>
-
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          Value:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-        </form>
+        <br />
+        <br />
+        <text>
+        Type in a transaction
+        </text>
 
         <form onSubmit={this.handleSubmitRecepient}>
         <label>
           recipient:
-          <input type="text" value={this.state.transactions.recipient} onChange={this.handleChangeRecepient} />
+          <input type="text" value={this.state.transactions.recipient} onChange={this.handleChangeRecepient} placeholder="r3c1p13nt" />
         </label>
+        
         <input type="submit" value="Submit" />
         </form>
 
-        <br />
+     
 
-        <form onSubmit={this.handleChangeAmount}>
+       <form onSubmit={this.handleSubmitAmount}>
         <label>
           amount:
-          <textarea value={this.state.transactions.amount} onChange={this.handleChangeAmount} />
+          <input type="text" value={this.state.transactions.amount} onChange={this.handleChangeAmount} placeholder="50" />
         </label>
+        
         <input type="submit" value="Submit" />
         </form>
 
-        <br />
         <br />
 				<button onClick={() => this.getTransactions()}>
           Get Transactions
