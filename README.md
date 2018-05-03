@@ -31,7 +31,7 @@ If all goes well, you'll be able to interact with the UI.
 ## Steps to create one
  1. Blocks
  2. Blockchain
- 3. API
+ 3. API endpoints
  4. Peer Server
  5. Proof of Work
  6. Wallet
