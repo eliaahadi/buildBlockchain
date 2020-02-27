@@ -64,3 +64,5 @@ public/bundle.js.map
 .vscode/launch.json
 
 .DS_Store
+
+yarn.lock
