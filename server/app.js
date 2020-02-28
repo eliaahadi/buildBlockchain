@@ -20,8 +20,6 @@ app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,10 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', index);
 app.use(express.static(path.join(__dirname, '../public')));
-
-// app.get('/', function(req, res){
-//   res.send('hello world somewhere');
-// });
 
 //PROXY TO API
 const apiProxy =
@@ -51,19 +45,13 @@ app.use(function(err, req, res, next) {
 	console.error(err.stack);
 	res.status(500).send('Something broke!', err);
 });
-/*
+
 // catch 404 and forward to error handler
 app.use((request, response, next) => {
 	console.log('app.js test ', response);
-	// const error = new Error('Not Found');
-	// error.status = 404;
 	next();
 });
 
-
-
-
-// error handler
 app.use((error, request, response) => {
 	// set locals, only providing error in development
 	response.locals.message = error.message;
@@ -73,9 +61,5 @@ app.use((error, request, response) => {
 	response.status(error.status || 500);
 	response.render('error');
 });
-*/
-
-
-
 
 module.exports = app;

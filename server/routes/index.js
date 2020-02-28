@@ -16,15 +16,6 @@ const tp = new TransactionPool();
 const p2pServer = new P2pServer(bc, tp);
 const miner = new Miner(bc, tp, wallet, p2pServer);
 
-
-// app.use(bodyParser.json());
-/*
-router.get('/', (req, res, next) => {
-  res.send('hello world somewhere');
-});
-*/
-
-
 // this endpoint checks the blocks chain
 router.get('/blocks', (req, res) => {
 	res.json(bc.chain);
@@ -40,11 +31,6 @@ router.post('/mine', (req, res) => {
 	res.redirect('/api/blocks');
 });
 
-/* post on localhost:4001 
-{
-"data": "foo"
-}
-*/ 
 
 // this endpoint gets the transactions
 router.get('/transactions', (req, res) => {
@@ -77,31 +63,6 @@ router.get('/public-key', (req, res) => {
 router.get('/balance', (req, res) => {
 	res.json({ wallet: wallet.calculateBalance(bc) });
 });
-
-
-/*
-// --->>> GET IMAGES API <<<------
-router.get('/images', function(req, res){
-	const imgFolder = __dirname + '/public/images/';
-	// REQUIRE FILE SYSTEM
-	const fs = require('fs');
-	//READ ALL FILES IN THE DIRECTORY
-	fs.readdir(imgFolder, function(err,
-		files) {
-		if(err){
-			return console.error(err);
-		}
-		//CREATE AN EMPTY ARRAY
-		const filesArr = [];
-		// ITERATE ALL IMAGES IN THE DIRECTORY AND ADD TO THE THE ARRAY
-		files.forEach(function(file){
-			filesArr.push({name: file});
-		});
-		// SEND THE JSON RESPONSE WITH THE ARRAY
-		res.json(filesArr);
-	});
-});
-*/
 
 p2pServer.listen();
 

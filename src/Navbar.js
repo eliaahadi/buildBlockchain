@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
 import {Nav, NavItem, Navbar, Badge} from 'react-bootstrap';
-// import { goHome } from '../actions/index';
-// import Upload from './Upload';
-
 
 class Navbarheader extends Component {
 	render() {
